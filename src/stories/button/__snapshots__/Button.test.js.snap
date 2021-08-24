@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`As a user I want to have a button should allow additional classes 1`] = `
+<div>
+  <button
+    class="button-secondary custom custom2"
+    type="button"
+  >
+    Button
+  </button>
+</div>
+`;
+
+exports[`As a user I want to have a button should allow custom content 1`] = `
+<div>
+  <button
+    class="button-secondary "
+    type="button"
+  >
+    button test
+  </button>
+</div>
+`;
+
+exports[`As a user I want to have a button should render a primary button 1`] = `
+<div>
+  <button
+    class="button-classic "
+    type="button"
+  >
+    Button
+  </button>
+</div>
+`;
+
+exports[`As a user I want to have a button should render a secondary button 1`] = `
+<div>
+  <button
+    class="button-secondary "
+    type="button"
+  >
+    Button
+  </button>
+</div>
+`;
