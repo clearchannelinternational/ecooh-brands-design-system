@@ -1,0 +1,147 @@
+.tag-list {
+  margin: $layout-03 0;
+  .tag {
+    &:first-child {
+      margin-left: 0;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+@mixin tag-mixin {
+  padding: $spacer-01 $spacer-03 $spacer-01 $spacer-03;
+  border-radius: 16px;
+  font-weight: $weight-medium;
+  height: 32px;
+  transition: all .1s ease-in-out;
+  display: inline-block;
+  @include font-size(caption);
+  width: max-content;
+  line-height: 24px;
+}
+
+.tag {
+  @include tag-mixin;
+
+  // white or black tag
+  &.classic-tag {
+    @include tag-mixin;
+    @include themed() {
+      transition: $transition-theme;
+      background-color: t($background-base);
+      border: 1px solid t($border);
+    }
+    margin-left: $layout-02;
+    display: inline-block;
+  }
+
+  // branded color
+  &.primary-tag {
+    @include tag-mixin;
+    background: $brand-primary;
+    color: $background--base--light;
+    margin-bottom: $layout-03;
+  }
+
+  // orange tag
+  &.warning-tag {
+    @include tag-mixin;
+    background: $fill-warn;
+    color: $text-warn;
+  }
+
+  // red tag
+  &.alert-tag {
+    @include tag-mixin;
+    background: $fill-alert;
+    color: $text-alert;
+  }
+
+  // green tag
+  &.success-tag {
+    @include tag-mixin;
+    background: $fill-success;
+    color: $text-success;
+  }
+
+  //grey tag
+  &.disabled-tag {
+    @include tag-mixin;
+    background: $background--alt--light;
+    color: $text-label;
+  }
+
+  // list tags (separated by pipe)
+  &.pipe-tag {
+    @extend .tag;
+    background: none;
+    padding: 0;
+    text-transform: none;
+    letter-spacing: 0.4px;
+    color: $text-label;
+    height: auto;
+
+    a {
+      color: $text-label;
+      &:hover, &:visited, &.active {
+        text-decoration: underline;
+      }
+    }
+
+    &:after {
+      content: "|";
+      margin: 0 4px;
+    }
+
+    &:last-child {
+      &:after {
+        content: "";
+      }
+    }
+
+    &.black {
+      @include themed() {
+        transition: $transition-theme;
+        color: t($text-base);
+      }
+    }
+  }
+
+  // tags white close icon
+  &.filter-tag {
+    @extend .tag;
+    margin: 0 $spacer-01 $spacer-02 0;
+    color: $text-label;
+    position: relative;
+    padding-right: $spacer-06;
+
+    @include themed() {
+      transition: $transition-theme;
+      border: 1px solid t($border);
+    }
+
+
+    &:hover,
+    &:focus {
+      @include themed() {
+        transition: $transition-theme;
+        background-color: t($background-alt);
+        color: t($text-base);
+      }
+    }
+
+    svg {
+      margin-left: $spacer-01;
+      cursor: pointer;
+      font-size: 24px;
+      position: absolute;
+      top: 3px;
+
+      &:hover {
+        color: $brand-primary;
+      }
+    }
+  }
+}

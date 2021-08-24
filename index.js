@@ -1,3 +1,3 @@
-import "./src/styles/app.scss"
+import "./dist/styles/app.scss"
 
-export * from './src/stories/Button';
+export * from './dist/stories/Button';

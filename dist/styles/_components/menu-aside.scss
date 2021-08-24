@@ -1,0 +1,53 @@
+aside {
+    padding: $layout-04 $layout-02;
+    z-index: 0;
+    height: 100vh;
+    position: fixed;
+
+    @include themed() {
+        transition: $transition-theme;
+        background: t($background-base);
+    }
+
+    @include respond-to("extra-large-up") {
+        padding: $layout-04;
+        min-width: 250px;
+    }
+
+    a {
+        padding: $layout-03;
+        list-style-type: none;
+        border-radius: 4px;
+        display: flex;
+
+        li {
+            display: flex;
+            align-items: center;
+
+            svg {
+                font-size: $fs-16;
+                color: $text-label;
+            }
+
+            .label {
+                display: none;
+
+                @include respond-to("extra-large-up") {
+                    display: block;
+                    margin-left: $spacer-02;
+                }
+            }
+        }
+
+        &.is-active,
+        &:hover {
+            text-decoration: none;
+            background: $fill-brand;
+            .label,
+            svg {
+                color: $brand-primary
+            }
+        }
+
+    }
+}

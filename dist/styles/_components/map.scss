@@ -1,0 +1,140 @@
+#mapWrapper {
+  width: 100%;
+  height: 600px;
+  position: relative;
+  .button-link {
+    margin-bottom: $layout-04;
+  }
+}
+
+#campaign-detals-map-wrapper {
+  height: 600px;
+  position: relative;
+  .button-link {
+    margin-bottom: $layout-04;
+  }
+}
+
+.loading-overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.6);
+  z-index: 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  span {
+    animation: rotation 1s infinite linear;
+    font-size: 40px;
+  }
+}
+
+.map-radius {
+  margin-top: $layout-04;
+  background-color: $background--base--light;
+  padding: $spacer-03;
+  border-radius: 16px;
+  border: 1px solid $background--alt2--light;
+  align-items: center;
+
+  @include respond-to('extra-large-up') {
+    position: absolute;
+    width: fit-content;
+    bottom: -120px;
+    left: 24px;
+  }
+
+  input {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    background: $background--alt2--light;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: 0.2s;
+    transition: opacity 0.2s;
+  }
+}
+
+.selected-panel {
+  background-color: $background--base--light;
+  padding: $spacer-03 $spacer-03 $spacer-03 $spacer-03;
+  border-radius: 16px;
+  border: 1px solid $background--alt2--light;
+  margin-bottom: $layout-03;
+
+  @include respond-to('extra-large-up') {
+    position: absolute;
+    top: 176px;
+    right: 16px;
+    z-index: 3;
+  }
+
+  ul {
+    overflow-y: auto;
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: $layout-02 $layout-03 $layout-02;
+      border-bottom: 1px solid $background--alt2--light;
+
+      .panel-name {
+        width: 200px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .action-icons {
+        margin-left: $layout-03;
+        color: $text-label;
+
+        .ecooh-icon {
+          margin-left: $layout-02;
+          vertical-align: sub;
+          cursor: pointer;
+
+          &:hover {
+            color: $brand-primary;
+          }
+        }
+      }
+    }
+  }
+
+  .total-price {
+    @include font-size(h1);
+    color: $brand-primary;
+    margin: $layout-03 0;
+  }
+
+  &-number {
+    margin-bottom: $layout-03;
+    display: block;
+  }
+}
+
+.map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 140px;
+
+  .map-legend-item {
+    margin: $layout-03 $layout-03 0 0;
+    align-items: center;
+    display: flex;
+
+    img {
+      width: 24px;
+      height: 24px;
+      margin-right: $layout-01;
+    }
+  }
+}

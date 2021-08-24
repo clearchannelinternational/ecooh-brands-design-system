@@ -1,0 +1,23 @@
+.helper {
+    &--simple {
+        margin-top: $layout-01;
+        &::before {
+            content: '💡';
+        }
+
+        p {
+            &:first-child {
+                display: inline;
+            }
+        }
+
+        p,
+        button,
+        .simple-link,
+        a:not([href]):not([tabindex]) {
+            @include font-size(caption);
+            color: $text-warn;
+        }
+    }
+
+}

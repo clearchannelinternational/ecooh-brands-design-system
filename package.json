@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
+    "@babel/cli": "^7.14.8",
     "@babel/core": "^7.15.0",
     "@storybook/addon-actions": "^6.3.7",
     "@storybook/addon-essentials": "^6.3.7",
@@ -14,6 +15,8 @@
     "@storybook/preset-scss": "^1.0.3",
     "@storybook/react": "^6.3.7",
     "babel-loader": "^8.2.2",
+    "babel-preset-react-app": "^10.0.0",
+    "cross-env": "^7.0.3",
     "css-loader": "^6.2.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -23,8 +26,19 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cp -R src/ dist/ && cross-env BABEL_ENV=production babel src -d dist",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
+  },
+  "babel": {
+    "presets": [
+      [
+        "react-app",
+        {
+          "absoluteRuntime": false
+        }
+      ]
+    ]
   },
   "keywords": [],
   "author": "",

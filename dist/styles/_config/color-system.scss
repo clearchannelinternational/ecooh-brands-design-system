@@ -1,0 +1,75 @@
+// Color names
+$brand-primary : #FE0078 !default;
+$brand-secondary : #0075FE !default;
+
+$background--base--light : #ffffff !default;
+$background--base--dark : #171C29 !default;
+
+$background--alt--light : #F4F4F4 !default;
+$background--alt--dark : #212633 !default;
+
+$background--alt2--light : #E3E3E3 !default;
+$background--alt2--dark : #313641 !default;
+
+$text--base--light : #171C29 !default;
+$text--base--dark : #FFFFFF !default;
+
+$text-label : #A0A0A0 !default;
+$text-warn : #FFB34B !default;
+$text-alert : #FF4E19 !default;
+$text-success : #24EB80 !default;
+$text-brand : #FE0078  !default;
+  
+$fill-warn : rgba(#FFB34B, .10) !default;
+$fill-alert :rgba(#FF4E19, .10) !default;
+$fill-success : rgba(#24EB80, .10) !default;
+$fill-brand : rgba(#FE0078 , .10) !default;
+
+//shortcuts for theming
+$background-base: 'background-base';
+$background-alt: 'background-alt';
+$border: 'border';
+$text-base: 'text-base';
+$logo: 'logo';
+$reverse: 'reverse';
+
+//themes
+$themes: (
+        default: (
+                background-base: $background--base--light,
+                background-alt: $background--alt--light,
+                border: $background--alt2--light,
+                text-base: $text--base--light,
+                reverse: $background--base--dark,
+                logo: url("/src/images/logo-light.svg")
+
+        ),
+        dark: (
+                background-base: $background--base--dark,
+                background-alt: $background--alt--dark,
+                border: $background--alt2--dark,
+                text-base: $text--base--dark,
+                reverse: $background--base--light,
+                logo: url("/src/images/logo-dark.svg")
+        ),
+);
+
+@mixin themed() {
+  @each $theme, $map in $themes {
+    .theme--#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), '#{$key}');
+        $theme-map: map-merge($theme-map, ($key: $value)) !global;
+      }
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+
+@function t($key) {
+  @return map-get($theme-map, $key);
+}
+
+$transition-theme : all .1s ease-in-out;

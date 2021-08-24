@@ -1,0 +1,229 @@
+// Font families
+$font-family-base : "Montserrat",
+sans-serif !default; // system font stack
+
+// Font Sizes
+$fs-12: 1.2rem;
+$fs-14: 1.4rem;
+$fs-16: 1.6rem;
+$fs-18: 1.8rem;
+$fs-24: 2.4rem;
+$fs-32: 3.2rem;
+$fs-48: 4.8rem;
+
+// Line heights
+$lh-20: 20px;
+$lh-24: 24px;
+$lh-28: 28px;
+$lh-34: 34px;
+$lh-42: 42px;
+$lh-68: 68px;
+
+// Font weights
+$weight-light : 300 !default;
+$weight-regular : 400 !default;
+$weight-medium : 500 !default;
+$weight-bold : 700 !default;
+
+// font-size Mixines
+// ex. h2 { @include font-size(h2);}
+@mixin font-size($elem) {
+    $q: map-get($font-sizes, $elem);
+    $mob-fontSize: map-get($q, "mobile-fontSize");
+    $desk-fontSize: map-get($q, "desktop-fontSize");
+    $mob-lineHeight: map-get($q, "mobile-lineHeight");
+    $desk-lineHeight: map-get($q, "desktop-lineHeight");
+
+    font-size: $mob-fontSize;
+    line-height: $mob-lineHeight;
+
+    @include respond-to("large-up") {
+        font-size: $desk-fontSize;
+        line-height: $desk-lineHeight;
+    }
+}
+
+// Font mapping
+$font-sizes: (
+    h1: (mobile-fontSize : $fs-18,
+        desktop-fontSize : $fs-32,
+        mobile-lineHeight : $lh-24,
+        desktop-lineHeight : $lh-42),
+    h2: (mobile-fontSize : $fs-16,
+        desktop-fontSize : $fs-18,
+        mobile-lineHeight : $lh-24,
+        desktop-lineHeight : $lh-28),
+    h3: (mobile-fontSize : $fs-18,
+        mobile-lineHeight : $lh-28),
+    h4: (mobile-fontSize : $fs-14,
+        desktop-fontSize : $fs-16,
+        mobile-lineHeight : $lh-20,
+        desktop-lineHeight : $lh-24),
+    p: (mobile-fontSize : $fs-14,
+        desktop-fontSize : $fs-16,
+        mobile-lineHeight : $lh-20,
+        desktop-lineHeight : $lh-24),
+    label: (mobile-fontSize : $fs-12),
+    caption: (mobile-fontSize : $fs-12,
+        mobile-lineHeight : $lh-20),
+    big-stats: (mobile-fontSize : $fs-32,
+        desktop-fontSize : $fs-48,
+        mobile-lineHeight : $lh-34,
+        desktop-lineHeight : $lh-68),
+    small-stats: (mobile-fontSize : $fs-14,
+        desktop-fontSize : $fs-16,
+        mobile-lineHeight : $lh-20,
+        desktop-lineHeight : $lh-24),
+);
+
+
+/* Headings and text */
+h1 {
+    @include font-size(h1);
+    font-weight: $weight-bold;
+    margin: 0 0 $layout-02 0;
+    @include respond-to("large-up") {
+        margin: 0 0 $layout-03 0;
+    }
+}
+
+h2 {
+    @include font-size(h2);
+    font-style: italic;
+    font-weight: $weight-regular;
+    margin: 0;
+    display: inline;
+    color: $text-label;
+
+    a {
+        @include themed() {
+            transition: $transition-theme;
+            color: t($text-base);
+        }
+
+        text-decoration: underline
+    }
+}
+
+h3 {
+    @include font-size(h3);
+    font-weight: $weight-bold;
+    text-align: center;
+    margin-top: $layout-05;
+    margin-bottom: $layout-04;
+    width: 100%;
+
+    &.with-sepatator {
+
+        &::before {
+            display: inline-block;
+            content: "";
+
+            @include themed() {
+                transition: $transition-theme;
+                border-top: 1px solid t($border);
+            }
+
+            width: 100%;
+            margin: 0;
+            transform: translateY(-1rem);
+        }
+
+        &::after {
+            display: inline-block;
+            content: "";
+
+            @include themed() {
+                transition: $transition-theme;
+                border-bottom: 1px solid t($border);
+            }
+
+            width: 100%;
+            margin: $spacer-05 0 0;
+            transform: translateY(-1rem);
+        }
+    }
+}
+
+h4 {
+    @include font-size(h4);
+    margin-bottom: $layout-02;
+    font-weight: $weight-bold;
+}
+
+p {
+    @include font-size(p);
+    margin-bottom: $layout-02;
+    display: block;
+}
+
+.label,
+label {
+    @include font-size(label);
+    color: $text-label;
+}
+
+.caption {
+    @include font-size(caption);
+    font-weight: $weight-medium;
+}
+
+.big-stat {
+    @include font-size(big-stats);
+    font-weight: $weight-light;
+}
+
+.small-stat {
+    @include font-size(small-stats);
+    font-weight: $weight-light;
+}
+
+.highlighted-text {
+    color: $brand-primary;
+}
+
+.simple-link,
+a:not([href]):not([tabindex]) {
+    @include font-size(p);
+    @include themed() {
+        transition: $transition-theme;
+        color: t($text-base);
+    }
+    text-decoration: underline;
+    cursor: pointer;
+
+    &:visited {
+        text-decoration: none;
+    }
+
+    &:hover,
+    &.active {
+        text-decoration: underline;
+        color: $brand-primary;
+    }
+}
+
+// alignment
+.text-center {
+    text-align: center;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.lite {
+    font-weight: $weight-light;
+}
+
+.regular {
+    font-weight: $weight-regular;
+}
+
+.medium {
+    font-weight: $weight-medium;
+}
+
+.bold {
+    font-weight: $weight-bold;
+}

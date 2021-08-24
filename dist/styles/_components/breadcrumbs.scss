@@ -1,0 +1,64 @@
+.breadcrumb {
+  display: none;
+  align-items: center;
+  margin: $layout-04 0 0 0;
+  flex-wrap: wrap;
+
+  @include respond-to('large-up') {
+    display: flex;
+  }
+
+  .breadcrumb-item {
+    align-items: center;
+    display: flex;
+
+    .navigation-menu-icon {
+      display: block;
+      height: 24px;
+      width: 24px;
+
+      svg {
+        height: 24px;
+      }
+    }
+  }
+
+}
+
+.breadcrumbs {
+  padding: $spacer-01 $spacer-03 $spacer-01 $spacer-03;
+  border-radius: 16px;
+  font-weight: $weight-regular;
+  height: 32px;
+  transition: all .1s ease-in-out;
+  display: inline-block;
+  @include font-size(caption);
+  margin: 0 $layout-02 0 0;
+
+  &.active {
+    @include themed() {
+      transition: $transition-theme;
+      background-color: t($background-base);
+      border: 1px solid t($border);
+    }
+  }
+
+  &.success {
+    color: $text-success;
+    border: 1px solid $text-success;
+
+    &:hover,
+    &:focus {
+      background-color: $fill-success;
+    }
+  }
+
+  &:disabled {
+    @include themed() {
+      transition: $transition-theme;
+      background-color: t($background-alt);
+      border: none;
+    }
+
+  }
+}
