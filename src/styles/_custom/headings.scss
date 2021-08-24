@@ -1,0 +1,25 @@
+.rule-heading {
+  line-height: 0.5;
+  text-align: center;
+}
+.rule-heading span {
+  display: inline-block;
+  position: relative;
+}
+.rule-heading span:before,
+.rule-heading span:after {
+  content: "";
+  position: absolute;
+  height: 5px;
+  border-bottom: 1px solid #aaa;
+  top: 0;
+  width: 600px;
+}
+.rule-heading span:before {
+  right: 100%;
+  margin-right: 15px;
+}
+.rule-heading span:after {
+  left: 100%;
+  margin-left: 15px;
+}

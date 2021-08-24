@@ -1,0 +1,35 @@
+/* ----------------------------- */
+/* ==Base (basic styles)         */
+/* ----------------------------- */
+
+/* switching to border-box model for all elements */
+html {
+  box-sizing: border-box;
+  /* scroll-behavior: smooth; */
+  /* set base font-size to equiv "10px", which is adapted to rem unit */
+  font-size: 62.5%;
+  /* IE9-IE11 math fixing. See http://bit.ly/1g4X0bX */
+  font-size: calc(1em * 0.625);
+}
+
+body {
+  margin: 0;
+  font-family: $font-family-base;
+  font-size: $fs-16;
+  line-height: $lh-24;
+  padding-top: $layout-08;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.mainBody {
+  margin: 0;
+  display: block;
+  width:100%;
+  min-height: 85vh; /* 100vh had a few issues */
+  @include themed() {
+    transition: $transition-theme;
+    color: t($text-base);
+    background: t($background-base);
+  }
+}

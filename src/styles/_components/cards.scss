@@ -1,0 +1,175 @@
+.card {
+  margin-bottom: $layout-03;
+  border-radius: 16px;
+  border: 1px solid $background--alt2--light;
+  position: relative;
+
+  @include themed() {
+    transition: $transition-theme;
+    background: t($background-base);
+    color: t($text-base);
+  }
+
+  &__content {
+    padding: $spacer-03;
+
+    @include respond-to('large-up') {
+      padding: $spacer-04;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    .separator {
+      margin: $layout-03 0;
+    }
+
+    p {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__image {
+    height: 0;
+    padding-top: 56.25%;
+    position: relative;
+    background-position: center;
+    background-size: cover;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+
+    @include themed() {
+      transition: $transition-theme;
+    }
+
+    .classic-tag {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+    }
+
+    &--animated-label {
+      position: absolute;
+      bottom: 0;
+      left: -8px;
+      z-index: 9999;
+      padding: $spacer-02 $spacer-03 $spacer-02 $spacer-03;
+      border-top-right-radius: 16px;
+      font-weight: $weight-bold;
+      transition: all 0.1s ease-in-out;
+      color: $background--base--light;
+      display: inline-block;
+      background: linear-gradient(-45deg, #0075fe, #fe0078, #0075fe);
+      background-size: 400% 400%;
+      animation: gradient 12s ease infinite;
+
+      .shadow {
+        display: inline-block;
+        height: 0;
+        width: 0;
+        border-top: 8px solid darken($brand-secondary, 20%);
+        border-left: 8px solid transparent;
+        position: absolute;
+        left: 0;
+        top: 40px;
+      }
+    }
+  }
+
+  &--clickable {
+    cursor: pointer;
+    transform: scale(1);
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+      box-shadow: 0 5px 30px rgba(0, 0, 0, 0.15);
+      transform: scale(1.01);
+    }
+
+    &.selected {
+      color: $brand-primary !important;
+      background: $fill-brand !important;
+      border: 1px solid $brand-primary;
+    }
+
+    .illustration {
+      display: none;
+
+      @include respond-to('large-up') {
+        display: block;
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        width: 150px;
+      }
+    }
+
+    &__disabled {
+      background: $background--alt--light !important;
+      box-shadow: none;
+      opacity: 0.8;
+      &:hover {
+        box-shadow: none;
+        transform: none;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  &--colored {
+    border: none;
+    border-radius: 8px;
+
+    &__content {
+      display: flex;
+      align-items: center;
+      padding: $spacer-03;
+
+      .text {
+        @include font-size(caption);
+        font-weight: $weight-medium;
+        p {
+          @include font-size(caption);
+          font-weight: $weight-medium;
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    img {
+      width: 24px;
+      height: 24px;
+      margin-right: $layout-02;
+    }
+
+    &.warning {
+      background: $fill-warn;
+      color: $text-warn;
+    }
+
+    &.error {
+      background: $fill-alert;
+      color: $text-alert;
+    }
+
+    &.success {
+      background: $fill-success;
+      color: $text-success;
+    }
+
+    &.branded {
+      background: $fill-brand;
+      color: $brand-primary;
+    }
+  }
+
+  .map-card {
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+}

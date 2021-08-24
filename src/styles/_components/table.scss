@@ -1,0 +1,98 @@
+table {
+  margin-top: $layout-04;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  font-size: $fs-14;
+  line-height: $lh-20;
+
+  .table-header {
+    display: none;
+
+    @include respond-to('large-up') {
+      height: 66px;
+      width: 100%;
+      padding: 40px;
+      display: table-row;
+    }
+
+    @include themed() {
+      transition: $transition-theme;
+      background-color: t($background-alt);
+    }
+
+    th {
+      padding: $layout-03;
+
+      &:last-child {
+        text-align: right;
+      }
+    }
+  }
+
+  tr {
+    display: block;
+    padding: $layout-03;
+
+    @include themed() {
+      transition: $transition-theme;
+      border-bottom: 1px solid t($border);
+    }
+
+    &:hover {
+      @include themed() {
+        transition: $transition-theme;
+        background-color: t($background-alt);
+      }
+    }
+
+    @include respond-to('large-up') {
+      margin-bottom: 0;
+      display: table-row;
+    }
+
+    &.clickable {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  td {
+    padding: $spacer-02 0;
+    display: flex;
+    flex-direction: column;
+
+    &::before {
+      margin-bottom: $layout-01;
+    }
+
+    @include respond-to('large-up') {
+      text-align: left;
+      display: table-cell;
+      padding: $spacer-03;
+    }
+
+    &.cell-actions {
+      display: flex;
+      flex-flow: nowrap;
+
+      @include respond-to('large-up') {
+        justify-content: flex-end;
+      }
+
+      &:before {
+        content: '';
+      }
+    }
+  }
+
+  td:before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+
+    @include respond-to('large-up') {
+      content: '';
+    }
+  }
+}

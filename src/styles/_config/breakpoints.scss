@@ -1,0 +1,46 @@
+$small : 580px !default;
+$large : 768px !default;
+$extra-large : 1280px !default;
+
+// Additionnal "utility" breakpoints aliases
+// ex. @include respond-to("medium-up") {...}
+$bp-aliases: ('small-up' : (min-width: #{$small}),
+    'large-up' : (min-width: #{$large}),
+    'extra-large-up' : (min-width: #{$extra-large}));
+
+// Source : https://www.sitepoint.com/managing-responsive-breakpoints-sass/
+@mixin respond-to($name) {
+
+    // If the key exists in the map
+    @if map-has-key($bp-aliases, $name) {
+
+        // Prints a media query based on the value
+        @media #{inspect(map-get($bp-aliases, $name))} {
+            @content;
+        }
+    }
+
+    // If the key doesn't exist in the map
+    @else {
+        @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        +"Please make sure it is defined in `$breakpoints` map.";
+    }
+}
+
+
+
+/*
+ * Generates classes for a grid of columns, prefixed by size.
+ * The result will be .col-[size]-[col]-[total-columns] E.g. .col-xs-6-12
+ *
+ * @param {string}	$size			The name of the size target (e.g. xs, sm, md, lg, xl, etc.)
+ * @param {int}		$grid-columns	Amount of columns
+ */
+@mixin grid-generator($size, $grid-columns) {
+    @for $i from 1 through $grid-columns {
+        .col-#{$size}-#{$i}-#{$grid-columns} {
+            width: percentage($i / $grid-columns);
+            float: left;
+        }
+    }
+}

@@ -1,0 +1,179 @@
+button {
+  border: none;
+  background: none;
+  outline: none;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 40px;
+  text-decoration: none;
+  font-size: $fs-14;
+  width: max-content;
+
+  &:focus {
+    outline: 0px auto Highlight;
+    outline: 0px auto black;
+  }
+
+  &:disabled {
+    background-image: none;
+    transition: $transition-theme;
+    cursor: not-allowed;
+    color: $text-label;
+    border: none !important;
+    @include themed() {
+      background-color: t($background-alt);
+    }
+
+    &:hover {
+      color: $text-label !important;
+    }
+  }
+  .ecooh-icon {
+    height: 24px;
+    width: 24px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+.button-classic {
+  display: block;
+  font-weight: $weight-bold;
+  color: $text--base--dark;
+  height: 54px;
+  padding: $spacer-03 $spacer-04;
+  margin-bottom: $layout-04;
+  background-size: 300% 100%;
+  border-radius: 50px;
+  -o-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-image: linear-gradient(
+    to right,
+    #c10dff,
+    #fd0078,
+    #c10dff,
+    #fd0078
+  );
+  margin-top: $spacer-04;
+
+  &.centered {
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &.right {
+    margin-left: auto;
+  }
+
+  &:hover {
+    background-position: 100% 0;
+    text-decoration: underline;
+    .ecooh-icon {
+      text-decoration: none;
+    }
+  }
+
+  .ecooh-icon {
+    font-size: 24px;
+  }
+}
+
+.button-secondary {
+  @extend .button-classic;
+  background: none;
+  color: $text-label;
+
+  @include themed() {
+    transition: $transition-theme;
+    border: 1px solid t($border);
+  }
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    @include themed() {
+      color: t($text-base);
+      transition: $transition-theme;
+      background-color: t($background-alt);
+    }
+  }
+}
+
+.button-link {
+  display: flex;
+  align-self: flex-start;
+  padding: $spacer-02 $spacer-03;
+  font-weight: $weight-bold;
+  border-radius: 8px;
+  transition: $transition-theme;
+  line-height: 2.4rem;
+  font-size: $fs-12;
+  @include themed() {
+    color: t($text-base);
+    border: 1px solid t($border);
+  }
+
+  &:hover,
+  &:focus {
+    background: $fill-brand;
+    border: $brand-primary 1px solid;
+    color: $brand-primary;
+  }
+
+  &.icon-only {
+    border-radius: 32px;
+    padding: $spacer-02 $spacer-02 !important;
+    display: inline;
+    height: 42px;
+    width: 42px;
+    margin-right: $layout-01;
+  }
+}
+
+.button-line {
+  margin-top: $layout-06;
+  display: flex;
+  padding-top: $spacer-03;
+  padding-bottom: $spacer-03;
+
+  @include themed() {
+    transition: $transition-theme;
+    border-top: 1px solid t($border);
+  }
+
+  &.centered {
+    justify-content: center;
+  }
+
+  &.right {
+    justify-content: flex-end;
+  }
+
+  button {
+    margin-left: $layout-02;
+    margin-bottom: 0;
+    margin-top: 0;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  &--fixed {
+    @extend .button-line;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    width: 100%;
+    padding-right: $spacer-04;
+
+    @include themed() {
+      transition: $transition-theme;
+      background-color: t($background-alt);
+    }
+  }
+}

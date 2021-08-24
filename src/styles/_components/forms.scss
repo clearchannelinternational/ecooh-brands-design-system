@@ -1,0 +1,243 @@
+.input-group {
+  position: relative;
+  margin-bottom: $layout-03;
+
+  label {
+    top: 8px;
+    left: 8px;
+    position: absolute;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    z-index: 1;
+    width: calc(100% - 16px);
+  }
+
+  input[type='text'],
+  input[type='number'],
+  input[type='password'],
+  input[type='email'],
+  input[type='file'],
+  input[type='date'],
+  select,
+  textarea,
+  .upload-field {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    position: relative;
+    @include font-size(p);
+    width: 100%;
+    height: 66px;
+    border-radius: 4px;
+    border: none;
+    padding: $spacer-05 $spacer-02 $spacer-03 $spacer-02;
+
+    @include themed() {
+      transition: $transition-theme;
+      background-color: t($background-alt);
+      color: t($text-base);
+    }
+
+    &:disabled {
+      color: $text-label;
+      cursor: not-allowed;
+    }
+
+    &::placeholder {
+      color: $text-label;
+    }
+  }
+
+  select {
+    color: $text-label;
+  }
+
+  textarea {
+    height: 180px;
+  }
+
+  .upload-field {
+    @include themed() {
+      transition: $transition-theme;
+      background-color: t($background-alt);
+      border: dashed 2px #dddddd;
+    }
+
+    padding: $layout-04;
+    height: auto;
+    text-align: center;
+    cursor: copy;
+    margin-bottom: $layout-01;
+
+    .label-line {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: $spacer-02;
+
+      svg {
+        color: $text-label;
+        margin-right: $spacer-01;
+      }
+    }
+
+    .upload-field {
+      @include themed() {
+        transition: $transition-theme;
+        background-color: t($background-alt);
+        border: 1px dashed t($border);
+      }
+
+      padding: $layout-04;
+      height: auto;
+      text-align: center;
+      cursor: copy;
+      margin-bottom: $layout-01;
+
+      .label-line {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: $spacer-02;
+
+        svg {
+          color: $text-label;
+          margin-right: $spacer-01;
+        }
+      }
+
+      p {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 200px;
+        margin: auto;
+      }
+
+      #filePreviewImage {
+        width: 60%;
+        display: block;
+        height: auto;
+        margin-left: 20%;
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+
+        @include respond-to('extra-large-up') {
+          max-height: calc(100% - 32px);
+          width: auto;
+          position: absolute;
+          right: 2px;
+          top: 2px;
+          max-width: 250px;
+        }
+      }
+    }
+
+    #filePreviewImage {
+      width: 60%;
+      display: block;
+      height: auto;
+      margin-left: 20%;
+      border-top-right-radius: 2px;
+      border-bottom-right-radius: 2px;
+
+      @include respond-to('extra-large-up') {
+        max-height: calc(100% - 32px);
+        width: auto;
+        position: absolute;
+        right: 2px;
+        top: 2px;
+        max-width: 250px;
+      }
+    }
+  }
+
+  .error {
+    @include font-size(caption);
+    color: $text-alert;
+    margin-top: $layout-01;
+  }
+}
+
+.form-validation {
+  @include font-size(p);
+  margin: $layout-02 0;
+  border-radius: 4px;
+  padding: $layout-02;
+
+  &-error {
+    @extend .form-validation;
+    border: $text-alert solid 1px;
+    color: $text-alert;
+    background: rgba($text-alert, 0.1);
+
+    a {
+      color: $brand-primary;
+      text-decoration: underline;
+    }
+  }
+
+  &-success {
+    @extend .form-validation;
+    border: $text-success solid 1px;
+    color: $text-success;
+    background: rgba($text-success, 0.1);
+
+    a {
+      color: $text-success;
+      text-decoration: underline;
+    }
+  }
+}
+
+.inputIcon {
+  position: absolute;
+  right: 16px;
+  top: 22px;
+  font-size: 20px;
+  color: $text-label;
+  z-index: 1;
+
+  &.dropdown {
+    pointer-events: none;
+  }
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  margin-top: $layout-03;
+
+  input[type='checkbox'] {
+    margin-right: $layout-02;
+    width: 18px;
+    height: 18px;
+  }
+
+  label {
+    margin: 0;
+    @include font-size(p);
+  }
+}
+
+
+input[type='date']::-webkit-calendar-picker-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: auto;
+  height: auto;
+  color: transparent;
+  background: transparent;
+}
+
+input[type='date']::-webkit-inner-spin-button {
+  z-index: 1;
+}
+
+input[type='date']::-webkit-clear-button {
+  z-index: 1;
+}
