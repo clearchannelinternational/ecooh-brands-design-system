@@ -6,32 +6,32 @@ import {Button} from './Button'
 describe('As a user I want to have a button', () => {
   it('should render a primary button', () => {
     const { container } = render(
-      <Button mode="primary" />
+      <Button state="primary" />
     )
     expect(container).toMatchSnapshot()
   })
   it('should render a secondary button', () => {
     const { container } = render(
-      <Button mode="secondary" />
+      <Button state="secondary" />
     )
     expect(container).toMatchSnapshot()
   })
   it('should allow additional classes', () => {
     const { container } = render(
-      <Button mode="secondary" classes="custom custom2"/>
+      <Button state="secondary" classes="custom custom2"/>
     )
     expect(container).toMatchSnapshot()
   })
   it('should allow custom content', () => {
     const { container } = render(
-      <Button mode="secondary" >button test</Button>
+      <Button state="secondary" >button test</Button>
     )
     expect(container).toMatchSnapshot()
   })
   it('should handle clicks', () => {
     const mockClick = jest.fn()
     render(
-      <Button mode="secondary" onClick={mockClick}>button test</Button>
+      <Button state="secondary" onClick={mockClick}>button test</Button>
     )
     userEvent.click(screen.getByRole("button"))
     expect(mockClick).toHaveBeenCalled()

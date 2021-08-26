@@ -27,8 +27,6 @@ $bp-aliases: ('small-up' : (min-width: #{$small}),
     }
 }
 
-
-
 /*
  * Generates classes for a grid of columns, prefixed by size.
  * The result will be .col-[size]-[col]-[total-columns] E.g. .col-xs-6-12

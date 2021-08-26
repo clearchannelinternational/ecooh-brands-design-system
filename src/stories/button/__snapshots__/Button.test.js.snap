@@ -3,7 +3,7 @@
 exports[`As a user I want to have a button should allow additional classes 1`] = `
 <div>
   <button
-    class="button-secondary custom custom2"
+    class="es--btn es--btn--secondary custom custom2"
     type="button"
   >
     Button
@@ -14,7 +14,7 @@ exports[`As a user I want to have a button should allow additional classes 1`] =
 exports[`As a user I want to have a button should allow custom content 1`] = `
 <div>
   <button
-    class="button-secondary "
+    class="es--btn es--btn--secondary "
     type="button"
   >
     button test
@@ -25,7 +25,7 @@ exports[`As a user I want to have a button should allow custom content 1`] = `
 exports[`As a user I want to have a button should render a primary button 1`] = `
 <div>
   <button
-    class="button-classic "
+    class="es--btn es--btn--primary "
     type="button"
   >
     Button
@@ -36,7 +36,7 @@ exports[`As a user I want to have a button should render a primary button 1`] = 
 exports[`As a user I want to have a button should render a secondary button 1`] = `
 <div>
   <button
-    class="button-secondary "
+    class="es--btn es--btn--secondary "
     type="button"
   >
     Button

@@ -37,20 +37,20 @@ var TemplateDark = function TemplateDark(args) {
 var Primary = TemplateLight.bind({});
 exports.Primary = Primary;
 Primary.args = {
-  mode: 'primary'
+  state: 'primary'
 };
 var PrimaryDark = TemplateDark.bind({});
 exports.PrimaryDark = PrimaryDark;
 PrimaryDark.args = {
-  mode: 'primary'
+  state: 'primary'
 };
 var Secondary = TemplateLight.bind({});
 exports.Secondary = Secondary;
 Secondary.args = {
-  mode: 'secondary'
+  state: 'secondary'
 };
 var SecondaryDark = TemplateDark.bind({});
 exports.SecondaryDark = SecondaryDark;
 SecondaryDark.args = {
-  mode: 'secondary'
+  state: 'secondary'
 };

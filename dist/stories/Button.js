@@ -13,15 +13,15 @@ var _react = _interopRequireDefault(require("react"));
  * Primary UI component for user interaction
  */
 var Button = function Button(_ref) {
-  var mode = _ref.mode,
+  var state = _ref.state,
       children = _ref.children,
       onClick = _ref.onClick,
       classes = _ref.classes;
   var classesToRender;
 
-  switch (mode) {
+  switch (state) {
     case "primary":
-      classesToRender = 'button-classic';
+      classesToRender = 'es--btn es--btn--primary';
       break;
 
     case "secondary":
@@ -43,7 +43,7 @@ var Button = function Button(_ref) {
 exports.Button = Button;
 Button.defaultProps = {
   classes: '',
-  mode: 'primary',
+  state: 'primary',
   onClick: function onClick() {
     return true;
   }
